@@ -2,104 +2,76 @@
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "quarto",
   "rules": {
-    "source_file": {
+    "hello": {
       "type": "REPEAT",
       "content": {
         "type": "SYMBOL",
-        "name": "_definition"
+        "name": "_def"
       }
     },
-    "_definition": {
-      "type": "SYMBOL",
-      "name": "function_definition"
-    },
-    "function_definition": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "func"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "identifier"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_type"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "block"
-        }
-      ]
-    },
-    "_type": {
+    "_def": {
       "type": "CHOICE",
       "members": [
         {
-          "type": "STRING",
-          "value": "bool"
-        },
-        {
-          "type": "STRING",
-          "value": "string"
+          "type": "SYMBOL",
+          "name": "_blockDef"
         }
       ]
     },
-    "block": {
+    "_blockDef": {
       "type": "SEQ",
       "members": [
         {
           "type": "STRING",
-          "value": "{"
+          "value": "```"
         },
         {
           "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
-            "name": "_statement"
+            "name": "text"
           }
         },
         {
           "type": "STRING",
-          "value": "}"
+          "value": "```"
         }
       ]
     },
-    "_statement": {
-      "type": "SYMBOL",
-      "name": "return_statement"
-    },
-    "return_statement": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "return"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_expression"
-        },
-        {
-          "type": "STRING",
-          "value": ";"
-        }
-      ]
-    },
-    "_expression": {
+    "_md": {
       "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "#"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "text"
+            }
+          ]
         },
         {
-          "type": "SYMBOL",
-          "name": "number"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "##"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "text"
+            }
+          ]
         }
       ]
+    },
+    "text": {
+      "type": "PATTERN",
+      "value": "."
     },
     "identifier": {
       "type": "PATTERN",
