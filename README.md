@@ -1,2 +1,2 @@
-# quarto-tree-sitter
-Some things are not designed to be easy...
+# Dont use this
+I have no idea what I am doing
