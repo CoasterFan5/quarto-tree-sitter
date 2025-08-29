@@ -1,6 +1,30 @@
 [
   {
-    "type": "hello",
+    "type": "definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "languageId",
+          "named": true
+        },
+        {
+          "type": "startBlock",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "languageId",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "source_file",
     "named": true,
     "root": true,
     "fields": {},
@@ -9,18 +33,22 @@
       "required": false,
       "types": [
         {
-          "type": "text",
+          "type": "definition",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "```",
+    "type": "startBlock",
+    "named": true
+  },
+  {
+    "type": "{",
     "named": false
   },
   {
-    "type": "text",
-    "named": true
+    "type": "}",
+    "named": false
   }
 ]

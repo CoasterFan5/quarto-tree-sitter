@@ -12,14 +12,11 @@ module.exports = grammar({
 
   rules: {
     // TODO: add the actual grammar rules
-    hello: ($) => repeat($._def),
-    _def: ($) => choice($._blockDef),
-
-    _blockDef: ($) => seq("```", repeat($.text), "```"),
-    _md: ($) => choice(seq("#", $.text), seq("##", $.text)),
-
-    text: ($) => /./,
-    identifier: ($) => /[a-z]+/,
-    number: ($) => /\d+/,
+    source_file: ($) => repeat($.definition),
+    definition: ($) => choice($._markdownBlock),
+    _markdownBlock: ($) =>
+      seq($.codeBlockIdentifier, $.languageId, $.codeBlockIdentifier),
+    codeBlockIdentifier: ($) => "```",
+    languageId: ($) => seq("{", repeat(/./), "}"),
   },
 });

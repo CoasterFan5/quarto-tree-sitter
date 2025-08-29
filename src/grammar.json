@@ -2,84 +2,62 @@
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "quarto",
   "rules": {
-    "hello": {
+    "source_file": {
       "type": "REPEAT",
       "content": {
         "type": "SYMBOL",
-        "name": "_def"
+        "name": "definition"
       }
     },
-    "_def": {
+    "definition": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_blockDef"
+          "name": "_markdownBlock"
         }
       ]
     },
-    "_blockDef": {
+    "_markdownBlock": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "startBlock"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "languageId"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "startBlock"
+        }
+      ]
+    },
+    "startBlock": {
+      "type": "STRING",
+      "value": "```"
+    },
+    "languageId": {
       "type": "SEQ",
       "members": [
         {
           "type": "STRING",
-          "value": "```"
+          "value": "{"
         },
         {
           "type": "REPEAT",
           "content": {
-            "type": "SYMBOL",
-            "name": "text"
+            "type": "PATTERN",
+            "value": "."
           }
         },
         {
           "type": "STRING",
-          "value": "```"
+          "value": "}"
         }
       ]
-    },
-    "_md": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "#"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "text"
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "##"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "text"
-            }
-          ]
-        }
-      ]
-    },
-    "text": {
-      "type": "PATTERN",
-      "value": "."
-    },
-    "identifier": {
-      "type": "PATTERN",
-      "value": "[a-z]+"
-    },
-    "number": {
-      "type": "PATTERN",
-      "value": "\\d+"
     }
   },
   "extras": [
