@@ -23,7 +23,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "startBlock"
+          "name": "codeBlockIdentifier"
         },
         {
           "type": "SYMBOL",
@@ -31,11 +31,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "startBlock"
+          "name": "codeBlockIdentifier"
         }
       ]
     },
-    "startBlock": {
+    "codeBlockIdentifier": {
       "type": "STRING",
       "value": "```"
     },

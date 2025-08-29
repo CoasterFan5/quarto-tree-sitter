@@ -8,11 +8,11 @@
       "required": true,
       "types": [
         {
-          "type": "languageId",
+          "type": "codeBlockIdentifier",
           "named": true
         },
         {
-          "type": "startBlock",
+          "type": "languageId",
           "named": true
         }
       ]
@@ -40,7 +40,7 @@
     }
   },
   {
-    "type": "startBlock",
+    "type": "codeBlockIdentifier",
     "named": true
   },
   {

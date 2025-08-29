@@ -20,7 +20,7 @@
 #define SUPERTYPE_COUNT 0
 
 enum ts_symbol_identifiers {
-  sym_startBlock = 1,
+  sym_codeBlockIdentifier = 1,
   anon_sym_LBRACE = 2,
   aux_sym_languageId_token1 = 3,
   anon_sym_RBRACE = 4,
@@ -34,7 +34,7 @@ enum ts_symbol_identifiers {
 
 static const char * const ts_symbol_names[] = {
   [ts_builtin_sym_end] = "end",
-  [sym_startBlock] = "startBlock",
+  [sym_codeBlockIdentifier] = "codeBlockIdentifier",
   [anon_sym_LBRACE] = "{",
   [aux_sym_languageId_token1] = "languageId_token1",
   [anon_sym_RBRACE] = "}",
@@ -48,7 +48,7 @@ static const char * const ts_symbol_names[] = {
 
 static const TSSymbol ts_symbol_map[] = {
   [ts_builtin_sym_end] = ts_builtin_sym_end,
-  [sym_startBlock] = sym_startBlock,
+  [sym_codeBlockIdentifier] = sym_codeBlockIdentifier,
   [anon_sym_LBRACE] = anon_sym_LBRACE,
   [aux_sym_languageId_token1] = aux_sym_languageId_token1,
   [anon_sym_RBRACE] = anon_sym_RBRACE,
@@ -65,7 +65,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = false,
     .named = true,
   },
-  [sym_startBlock] = {
+  [sym_codeBlockIdentifier] = {
     .visible = true,
     .named = true,
   },
@@ -161,7 +161,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(ts_builtin_sym_end);
       END_STATE();
     case 5:
-      ACCEPT_TOKEN(sym_startBlock);
+      ACCEPT_TOKEN(sym_codeBlockIdentifier);
       END_STATE();
     case 6:
       ACCEPT_TOKEN(anon_sym_LBRACE);
@@ -206,7 +206,7 @@ static const TSLexerMode ts_lex_modes[STATE_COUNT] = {
 static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
   [STATE(0)] = {
     [ts_builtin_sym_end] = ACTIONS(1),
-    [sym_startBlock] = ACTIONS(1),
+    [sym_codeBlockIdentifier] = ACTIONS(1),
     [anon_sym_LBRACE] = ACTIONS(1),
     [anon_sym_RBRACE] = ACTIONS(1),
   },
@@ -216,14 +216,14 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [sym__markdownBlock] = STATE(8),
     [aux_sym_source_file_repeat1] = STATE(2),
     [ts_builtin_sym_end] = ACTIONS(3),
-    [sym_startBlock] = ACTIONS(5),
+    [sym_codeBlockIdentifier] = ACTIONS(5),
   },
 };
 
 static const uint16_t ts_small_parse_table[] = {
   [0] = 4,
     ACTIONS(5), 1,
-      sym_startBlock,
+      sym_codeBlockIdentifier,
     ACTIONS(7), 1,
       ts_builtin_sym_end,
     STATE(8), 1,
@@ -235,7 +235,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(9), 1,
       ts_builtin_sym_end,
     ACTIONS(11), 1,
-      sym_startBlock,
+      sym_codeBlockIdentifier,
     STATE(8), 1,
       sym__markdownBlock,
     STATE(3), 2,
@@ -270,23 +270,23 @@ static const uint16_t ts_small_parse_table[] = {
   [65] = 1,
     ACTIONS(29), 2,
       ts_builtin_sym_end,
-      sym_startBlock,
+      sym_codeBlockIdentifier,
   [70] = 1,
     ACTIONS(31), 2,
       ts_builtin_sym_end,
-      sym_startBlock,
+      sym_codeBlockIdentifier,
   [75] = 1,
     ACTIONS(33), 1,
       ts_builtin_sym_end,
   [79] = 1,
     ACTIONS(35), 1,
-      sym_startBlock,
+      sym_codeBlockIdentifier,
   [83] = 1,
     ACTIONS(37), 1,
-      sym_startBlock,
+      sym_codeBlockIdentifier,
   [87] = 1,
     ACTIONS(39), 1,
-      sym_startBlock,
+      sym_codeBlockIdentifier,
 };
 
 static const uint32_t ts_small_parse_table_map[] = {
